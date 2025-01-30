@@ -6,7 +6,6 @@ import type {
 	INodeTypeBaseDescription,
 	INodeTypeDescription,
 } from 'n8n-workflow';
-import { NodeConnectionType } from 'n8n-workflow';
 import { createTransport } from 'nodemailer';
 import type SMTPTransport from 'nodemailer/lib/smtp-transport';
 
@@ -21,12 +20,12 @@ const versionDescription: INodeTypeDescription = {
 		name: 'Send Email',
 		color: '#00bb88',
 	},
-	inputs: [NodeConnectionType.Main],
-	outputs: [NodeConnectionType.Main],
+	inputs: ['main'],
+	outputs: ['main'],
 	credentials: [
 		{
-			name: 'smtp',
-			required: true,
+			name: 'smtp2Api',
+			required: true
 		},
 	],
 	properties: [
@@ -128,7 +127,7 @@ const versionDescription: INodeTypeDescription = {
 					name: 'listUnsubscribe',
 					type: 'string',
 					default: '',
-					placeholder: '<mailto:unsubscribe@mail.io?subject=unsub-id>',
+					placeholder: '<mailto:unsubscribe@mail.io?subject=unsub-ID>',
 					description: 'Set unsubscribe link',
 				},
 				{
@@ -174,7 +173,7 @@ export class EmailCustomV1 implements INodeType {
 				const attachmentPropertyString = this.getNodeParameter('attachments', itemIndex) as string;
 				const options = this.getNodeParameter('options', itemIndex, {});
 
-				const credentials = await this.getCredentials('smtp');
+				const credentials = await this.getCredentials('smtp2Api');
 
 				const connectionOptions: SMTPTransport.Options = {
 					host: credentials.host as string,
@@ -203,13 +202,17 @@ export class EmailCustomV1 implements INodeType {
 					to: toEmail,
 					cc: ccEmail,
 					bcc: bccEmail,
-					listUnsubscribe: options.listUnsubscribe as string | undefined,
-					listUnsubscribePost: options.listUnsubscribePost as string | undefined,
 					subject,
 					text,
 					html,
+					headers: {} as Record<string, string>,
 					replyTo: options.replyTo as string | undefined,
 				};
+
+				if (options.listUnsubscribe) {
+            		(mailOptions.headers as Record<string, string>)['List-Unsubscribe'] = options.listUnsubscribe as string;
+            		(mailOptions.headers as Record<string, string>)['List-Unsubscribe-Post'] = options.listUnsubscribePost as string;
+        		}
 
 				if (attachmentPropertyString && item.binary) {
 					const attachments = [];

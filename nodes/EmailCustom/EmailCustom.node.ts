@@ -1,7 +1,7 @@
 import type { INodeTypeBaseDescription, IVersionedNodeType } from 'n8n-workflow';
 import { VersionedNodeType } from 'n8n-workflow';
 
-import { EmailCustomV1 } from './v1/EmailCustomV1.node';
+import { EmailCustomV1 } from './EmailCustom/EmailCustom.node';
 
 export class EmailCustom extends VersionedNodeType {
 	constructor() {
@@ -11,7 +11,7 @@ export class EmailCustom extends VersionedNodeType {
 			icon: 'fa:envelope',
 			group: ['output'],
 			defaultVersion: 1,
-			description: 'Sends an email using SMTP protocol',
+			description: 'Sends an email using SMTP2 protocol',
 		};
 
 		const nodeVersions: IVersionedNodeType['nodeVersions'] = {
