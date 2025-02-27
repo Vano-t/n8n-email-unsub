@@ -12,13 +12,12 @@ import type SMTPTransport from 'nodemailer/lib/smtp-transport';
 const versionDescription: INodeTypeDescription = {
 	displayName: 'Send Email',
 	name: 'emailCustom',
-	icon: 'fa:envelope',
+	icon: 'file:envelope-circle-check.svg',
 	group: ['output'],
 	version: 1,
 	description: 'Sends an Email',
 	defaults: {
 		name: 'Send Email',
-		color: '#00bb88',
 	},
 	inputs: ['main'],
 	outputs: ['main'],

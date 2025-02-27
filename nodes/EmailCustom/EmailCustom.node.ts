@@ -8,7 +8,7 @@ export class EmailCustom extends VersionedNodeType {
 		const baseDescription: INodeTypeBaseDescription = {
 			displayName: 'Send Email',
 			name: 'emailCustom',
-			icon: 'fa:envelope',
+			icon: 'file:envelope-circle-check.svg',
 			group: ['output'],
 			defaultVersion: 1,
 			description: 'Sends an email using SMTP2 protocol',
