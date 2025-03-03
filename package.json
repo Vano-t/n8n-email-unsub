@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-email-edit",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "custom email sender with List Unsubscribe",
   "keywords": [
     "n8n-community-node-package",

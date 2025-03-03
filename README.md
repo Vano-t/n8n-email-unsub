@@ -2,8 +2,6 @@
 
 This is an n8n community node. It lets you add a EmailSend node with custom List-Unsubscribe header to emails sent via n8n, improving deliverability and making it easier for recipients to unsubscribe.
 
-_App/service name_ is _one or two sentences describing the service this node integrates with_.
-
 [n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/reference/license/) workflow automation platform.
 
 [Installation](#installation)  
