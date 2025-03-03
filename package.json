@@ -1,9 +1,17 @@
 {
   "name": "n8n-nodes-email-edit",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "custom email sender with List Unsubscribe",
   "keywords": [
-    "n8n-community-node-package"
+    "n8n-community-node-package",
+    "n8n",
+    "n8n-nodes",
+    "Email Header",
+    "List-Unsubscribe",
+    "Deliverability",
+    "Email Marketing",
+    "Unsubscribe Management",
+    "Workflow Automation"
   ],
   "license": "MIT",
   "homepage": "",
